@@ -1,0 +1,29 @@
+{
+  "name": "Nike Sniper",
+  "manifest_version": 2,
+  "version": "1.0",
+  "author": "Bayrock",
+  "description": "Nike Store Sniper",
+  "icons": {
+    "128": "assets/Nike.png"
+  },
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_title": "Nike Sniper"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.nike.com/*"],
+      "js": [
+        "nikescan.js",
+        "autocart.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs" , "*://*.nike.com/*"
+  ],
+  "web_accessible_resources": [
+    "script.js"
+  ]
+}
