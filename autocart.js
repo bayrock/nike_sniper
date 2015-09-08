@@ -5,7 +5,16 @@ Author:Bayrock
 Description: Adds the desired shoe and size to the cart
 */
 
-var size = "10.5"; //What size should we target?
+var Prefs = {};
+
+// Restore preferences
+chrome.storage.sync.get({
+	shoeSize: '10.5', //default to 10.5
+	autoCart: true //default to true
+}, function(items) {
+	Prefs["size"] = items.shoeSize;
+	Prefs["auto"] = items.autoCart;
+});
 
 function AutoCart() {
 
@@ -13,7 +22,7 @@ function AutoCart() {
 
 	for(var i = 0; i < sizeList.length; i++) {
 
-		if(sizeList.options[i].text.trim() == size) {
+		if(sizeList.options[i].text.trim() == Prefs["size"]) {
 			sizeList.selectedIndex = i;
 		}
 	}
@@ -29,11 +38,11 @@ function AutoCart() {
 }
 
 function CartTick() {
-	if(document.getElementsByName("skuAndSize")[0] != undefined) {
+	if(document.getElementsByName("skuAndSize")[0] != undefined && Prefs["auto"]) {
 		setTimeout(AutoCart, 600);
 	} else {
 		setTimeout(CartTick, 300);
 	}
 }
 
-setTimeout(CartTick, 300);
+setTimeout(CartTick, 500);

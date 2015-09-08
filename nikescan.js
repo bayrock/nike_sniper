@@ -8,7 +8,7 @@ Description: Scans the page for the desired shoe
 var shoeName = "Jordan"; // What keyword should we target?
 var found = false;
 
-function nikeScan() {
+function NikeScan() {
 
 	var products = document.getElementsByClassName("product-display-name");
 
@@ -29,4 +29,4 @@ function nikeScan() {
 
 }
 
-setTimeout(nikeScan, 5000);
+setTimeout(NikeScan, 5000);

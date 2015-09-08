@@ -2,6 +2,6 @@
 A Chrome extension designed to help snipe exclusive shoe deals from [Nike Store](http://store.nike.com/)
 
 ## Installation
-- Open [Chrome Extensions](chrome://extensions/)
-- Configure the files to suit you
-- Drag and drop 'nike_sniper' to your extensions
+- Visit `chrome://extensions/`
+- Drag and drop the `nike_sniper` folder to the page
+- Configure the extension options to suit you

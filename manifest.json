@@ -1,9 +1,13 @@
 {
   "name": "Nike Sniper",
   "manifest_version": 2,
-  "version": "1.0",
+  "version": "1.1",
   "author": "Bayrock",
   "description": "Nike Store Sniper",
+  "options_ui": {
+  "page": "options.html",
+  "chrome_style": true
+  },
   "icons": {
     "128": "assets/Nike.png"
   },
@@ -21,6 +25,7 @@
     }
   ],
   "permissions": [
+    "storage",
     "tabs" , "*://*.nike.com/*"
   ],
   "web_accessible_resources": [
