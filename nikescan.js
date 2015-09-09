@@ -5,8 +5,17 @@ Author:Bayrock
 Description: Scans the page for the desired shoe
 */
 
-var shoeName = "Jordan"; // What keyword should we target?
 var found = false;
+
+// Check preferences
+chrome.storage.sync.get({
+	shoeName: 'Jordan', //default to Jordan
+	refreshInterval: 5000 //default to 5 seconds
+}, function(items) {
+	shoeName = items.shoeName;
+	refreshInterval = items.refreshInterval;
+	setTimeout(ScanTick, refreshInterval);
+});
 
 function NikeScan() {
 
@@ -29,4 +38,10 @@ function NikeScan() {
 
 }
 
-setTimeout(NikeScan, 5000);
+function ScanTick() {
+	if(document.getElementsByClassName("product-display-name")[0] != undefined) {
+		NikeScan()
+	} else {
+		setTimeout(ScanTick, 5000);
+	}
+}
