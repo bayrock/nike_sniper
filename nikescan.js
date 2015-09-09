@@ -17,6 +17,7 @@ chrome.storage.sync.get({
 	setTimeout(ScanTick, refreshInterval);
 });
 
+// Scan the site for the keyword
 function NikeScan() {
 
 	var products = document.getElementsByClassName("product-display-name");
