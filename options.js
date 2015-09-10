@@ -23,22 +23,18 @@ function savePreferences() {
     status.textContent = 'Options saved!';
     setTimeout(function() {
       status.textContent = '';
+      chrome.runtime.reload() //reload background
     }, 1000);
   });
 }
 
 // Restores preferences
 function setPreferences() {
-  chrome.storage.sync.get({
-    shoeName: 'Jordan', //default to Jordan
-    refreshInterval: 5000, //default to 5 seconds
-    shoeSize: '10.5', //default to 10.5
-    autoCart: true //default to true
-  }, function(items) {
-    document.getElementById('name').value = items.shoeName;
-    document.getElementById('interval').value = items.refreshInterval;
-    document.getElementById('size').value = items.shoeSize;
-    document.getElementById('autocart').checked = items.autoCart;
+  chrome.runtime.sendMessage({action: "send"}, function(response) {
+    document.getElementById('name').value = response.shoe;
+  	document.getElementById('interval').value = response.interval;
+  	document.getElementById('size').value = response.size;
+  	document.getElementById('autocart').checked = response.auto;
   });
 }
 

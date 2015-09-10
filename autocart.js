@@ -5,15 +5,13 @@ Author:Bayrock
 Description: Adds the desired shoe and size to the cart
 */
 
-// Check preferences
-chrome.storage.sync.get({
-	shoeSize: '10.5', //default to 10.5
-	autoCart: true //default to true
-}, function(items) {
-	shoeSize = items.shoeSize;
-	autoCart = items.autoCart;
+// Retrieve preferences
+chrome.runtime.sendMessage({action: "send"}, function(response) {
+	shoeSize = response.size;
+	autoCart = response.auto;
 });
 
+// Auto add-to-cart
 function AutoCart() {
 
 	var sizeList = document.getElementsByName("skuAndSize")[0];
