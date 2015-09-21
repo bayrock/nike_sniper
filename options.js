@@ -1,7 +1,7 @@
 /*
 Options.js
 
-Author:Bayrock
+Author: Bayrock
 Description: Handles the extensions options
 */
 
@@ -10,13 +10,13 @@ function savePreferences() {
   var name = document.getElementById('name').value;
   var interval = document.getElementById('interval').value;
   var size = document.getElementById('size').value;
-  var auto = document.getElementById('autocart').checked;
+  var enabled = document.getElementById('enabled').checked;
 
   chrome.storage.sync.set({
     shoeName: name,
     refreshInterval: interval,
     shoeSize: size,
-    autoCart: auto
+    scanEnabled: enabled
   }, function() {
     // Notify the user we saved
     var status = document.getElementById('status');
@@ -32,9 +32,9 @@ function savePreferences() {
 function setPreferences() {
   chrome.runtime.sendMessage({action: "send"}, function(response) {
     document.getElementById('name').value = response.shoe;
-  	document.getElementById('interval').value = response.interval;
-  	document.getElementById('size').value = response.size;
-  	document.getElementById('autocart').checked = response.auto;
+    document.getElementById('interval').value = response.interval;
+    document.getElementById('size').value = response.size;
+    document.getElementById('enabled').checked = response.enabled;
   });
 }
 

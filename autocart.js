@@ -1,14 +1,18 @@
 /*
 Autocart.js
 
-Author:Bayrock
+Author: Bayrock
 Description: Adds the desired shoe and size to the cart
 */
 
 // Retrieve preferences
 chrome.runtime.sendMessage({action: "send"}, function(response) {
 	shoeSize = response.size;
-	autoCart = response.auto;
+	scanEnabled = response.enabled;
+
+	if (scanEnabled) {
+		setTimeout(CartTick, 500);
+	}
 });
 
 // Auto add-to-cart
@@ -34,11 +38,9 @@ function AutoCart() {
 }
 
 function CartTick() {
-	if(document.getElementsByName("skuAndSize")[0] != undefined && autoCart) {
+	if(document.getElementsByName("skuAndSize")[0] != undefined) {
 		setTimeout(AutoCart, 500);
 	} else {
 		setTimeout(CartTick, 500);
 	}
 }
-
-setTimeout(CartTick, 500);

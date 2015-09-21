@@ -20,9 +20,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.nike.com/*"],
+      "matches": [
+        "*://*.nike.com/*",
+        "*://twitter.com/*"
+      ],
       "js": [
-        "nikescan.js",
+        "scan.js",
         "autocart.js"
       ]
     }
@@ -30,7 +33,8 @@
   "permissions": [
     "storage",
     "tabs",
-    "*://*.nike.com/*"
+    "*://*.nike.com/*",
+    "*://twitter.com/*"
   ],
   "web_accessible_resources": [
     "script.js"
