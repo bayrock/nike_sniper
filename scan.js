@@ -23,18 +23,18 @@ function NikeScan() {
 
 	var products = document.getElementsByClassName("product-display-name");
 
-	for (var i = 0; i < 5; i++) {
-		if (products[i].innerHTML.match(shoeName) == shoeName) {
-			var shoe = document.getElementsByClassName("grid-item")[i];
+  for (var i = 0; i < 5; i++) {
+    if (products[i].innerHTML.match(shoeName) == shoeName) {
+      var shoe = document.getElementsByClassName("grid-item")[i];
 
-			window.location.href = shoe.getElementsByTagName('a')[i].href;
-			found = true;
-			break;
-		}
-	}
+      window.location.href = shoe.getElementsByTagName('a')[i].href;
+      found = true;
+      break;
+    }
+  }
 
-	if (!found) {
-		location.reload(true);
+  if (!found) {
+    location.reload(true);
   }
 
 }
@@ -52,17 +52,17 @@ function TwitterScan() {
   }
 
   if (!found) {
-	   location.reload(true);
+    location.reload(true);
   }
 
 }
 
 function ScanTick() {
-	if (document.getElementsByClassName("product-display-name")[0] != undefined) {
-		NikeScan();
+  if (document.getElementsByClassName("product-display-name")[0] != undefined) {
+    NikeScan();
   } else if (document.getElementsByClassName("js-tweet-text")[0] != undefined) {
     TwitterScan();
-	} else if (scanEnabled) {
-		setTimeout(ScanTick, refreshInterval);
-	}
+  } else if (scanEnabled) {
+    setTimeout(ScanTick, refreshInterval);
+  }
 }
