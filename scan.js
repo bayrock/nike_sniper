@@ -1,7 +1,7 @@
 /*
 Scan.js
 
-Author:Bayrock
+Author: Bayrock
 Description: Scans the page for the desired shoe
 */
 
@@ -21,13 +21,13 @@ chrome.runtime.sendMessage({action: "send"}, function(response) {
 // Scan the site for the keyword
 function NikeScan() {
 
-	var products = document.getElementsByClassName("product-display-name");
+  var product = document.getElementsByClassName("product-display-name");
 
   for (var i = 0; i < 5; i++) {
-    if (products[i].innerHTML.match(shoeName) == shoeName) {
+    if (product[i].innerHTML.match(shoeName) == shoeName) {
       var shoe = document.getElementsByClassName("grid-item")[i];
 
-      window.location.href = shoe.getElementsByTagName('a')[i].href;
+      window.location.href = shoe.getElementsByTagName('a')[0].href;
       found = true;
       break;
     }
@@ -41,11 +41,11 @@ function NikeScan() {
 
 function TwitterScan() {
 
-  for (var i = 0; i < 4; i++) {
-    var tweet = document.getElementsByClassName("js-tweet-text")[i].innerHTML;
+  var tweet = document.getElementsByClassName("js-tweet-text")
 
-    if (tweet.match(shoeName) == shoeName) {
-      document.getElementsByClassName("twitter-timeline-link")[0].click();
+  for (var i = 0; i < 4; i++) {
+    if (tweet[i].innerHTML.match(shoeName) == shoeName) {
+      tweet[i].getElementsByClassName("twitter-timeline-link")[0].click();
       found = true;
       break;
     }
